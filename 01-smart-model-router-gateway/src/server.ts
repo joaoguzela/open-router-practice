@@ -1,6 +1,7 @@
 import Fastify from "fastify";
+import { OpenRouterService } from "./openrouterService.ts";
 
-export const createServer = () => {
+export const createServer = (routerService: OpenRouterService) => {
   const server = Fastify({});
 
   server.post(
@@ -20,9 +21,8 @@ export const createServer = () => {
     async (request, reply) => {
       try {
         const { question } = request.body as { question: string };
-        // Here you can implement your logic to handle the question and generate a response
-        const answer = `You asked: ${question}. This is a placeholder answer.`;
-        return reply.send({ answer });
+        const response = await routerService.generate(question);
+        return reply.send(response);
       } catch (error) {
         console.error("Error processing chat request:", error);
         return reply.status(500).send({ error: "Internal server error" });
