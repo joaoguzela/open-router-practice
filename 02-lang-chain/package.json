@@ -1,0 +1,23 @@
+{
+  "name": "02-lang-chain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --env-file .env ./tests/**/*.test.ts",
+    "dev": "node --env-file .env --inspect --watch src/index.ts",
+    "test:dev": "node --env-file .env --inspect --watch  --test ./tests/**/*.test.ts",
+    "langchain:serve": "npx @langchain/langgraph-cli@latest dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@langchain/core": "^1.2.13",
+    "@openrouter/sdk": "^0.5.1",
+    "@types/node": "^24.19.0",
+    "fastify": "^5.7.4",
+    "langchain": "^1.5.14"
+  }
+}
